@@ -66,7 +66,7 @@ export default {
         return;
       }
       try {
-        const response = await axios.post('http://localhost:8000/login', {
+        const response = await axios.post(this.api+"/login", {
           email: this.email,
           password: this.password
         });

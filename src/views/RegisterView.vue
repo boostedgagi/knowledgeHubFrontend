@@ -93,7 +93,7 @@ export default {
       }
 
       try {
-        const response = await axios.post('http://localhost:8000/users', {
+        const response = await axios.post(this.api+"/users", {
           firstName: this.firstName,
           lastName: this.lastName,
           email: this.email,
