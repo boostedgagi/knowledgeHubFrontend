@@ -20,6 +20,9 @@
         <router-link to="/login">Login </router-link>|
         <router-link to="/register"> Register</router-link>
       </div>
+      <div class="col">
+        <router-link to="/admin">Admin dashboard </router-link>
+      </div>
     </div>
   </nav>
   <router-view/>

@@ -32,6 +32,11 @@ const routes = [
     name:'profile',
     component: () => import('../views/ProfileView.vue')
   },
+  {
+    path:'/admin',
+    name:'admin',
+    component: () => import('../views/AdminView')
+  },
 ]
 
 const router = createRouter({

@@ -8,7 +8,7 @@
           <div class="card-body text-center">
             <h3 class="card-title">{{ }} {{ }}</h3>
             <p class="text-muted">{{ }}</p>
-            <p class="mb-0"><strong>Reputation:</strong> {{ n }}</p>
+            <p class="mb-0"><strong>Reputation:</strong> {{  }}</p>
             <p class="mb-0">Member from: {{ }}</p>
             <button class="btn btn-outline-primary" @click="modalVisible = true">Edit Profile</button>
           </div>
