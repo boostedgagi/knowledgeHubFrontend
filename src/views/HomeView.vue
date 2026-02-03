@@ -1,18 +1,17 @@
 <template>
   <div class="container py-5">
 
-    <!-- Search Section -->
     <div class="row mb-4">
       <div class="col-md-8 offset-md-2">
         <div class="input-group">
           <input
               type="text"
               class="form-control"
-              placeholder="Pretraži..."
+              placeholder="Find..."
               v-model="searchQuery"
           >
           <button class="btn btn-primary" @click="search">
-            Pretraži
+            Find
           </button>
         </div>
       </div>
@@ -22,14 +21,16 @@
     <div class="container border d-flex flex-column align-items-center">
       <div
           class="col-md-6 mb-6"
-          v-for="card in filteredCards"
-          :key="card.id"
+          v-for="post in posts"
+          :key="post.id"
       >
         <div class="card h-100 mb-4">
           <div class="card-body">
-            <h5 class="card-title">{{ card.title }}</h5>
-            <p class="card-text">{{ card.description }}</p>
-            <a href="#" class="btn btn-outline-primary">Detaljnije</a>
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text">{{ post.postContent }}</p>
+            <p class="card-text">{{ post.category.title }}</p>
+            <p class="card-text">User id</p>
+            <a href="#" class="btn btn-outline-primary">Show</a>
           </div>
         </div>
 
@@ -47,35 +48,32 @@
 </template>
 <script>
 
+import axios from "axios";
+
 export default {
   name: 'HomeView',
   data() {
     return {
+      posts: [],
       searchQuery: "",
-      cards: [
-        {}
-      ]
     }
   },
-  computed: {
-    filteredCards() {
-      if (!this.searchQuery) return this.cards;
-      return this.cards.filter(card =>
-          card.title.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
-    }
+  created() {
+    this.getPosts();
   },
   methods: {
     search() {
+    },
+    async getPosts() {
+      try {
+        const response = await axios.get(this.api + '/posts');
+        this.posts = response.data.data||[];
+      } catch (error) {
+        this.error = "Could not load posts.";
+      }
     }
   }
-
 }
+
+
 </script>
-<style scoped>
-.card-img-top {
-  height: 150px;
-  object-fit: cover;
-}
-</style>
-

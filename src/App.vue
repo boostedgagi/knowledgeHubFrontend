@@ -3,30 +3,30 @@
     <div class="row">
       <div class="col">
         <router-link to="/">Home</router-link>
-      </div>|
+      </div>
       <div class="col">
         <router-link to="/about">About</router-link>
-      </div>|
+      </div>
       <div class="col">
         <router-link to="/post">Post</router-link>
-      </div>|
+      </div>
       <div class="col">
         <router-link to="/ask">Ask</router-link>
-      </div>|
+      </div>
       <div class="col">
         <router-link to="/profile">Profile</router-link>
-      </div>|
+      </div>
       <div class="col">
         <router-link v-if="!auth.isLogged" to="/login">Login</router-link>
-      </div>|
+      </div>
       <div class="col">
         <router-link v-if="!auth.isLogged" to="/register">Register</router-link>
-      </div>|
+      </div>
       <div class="col">
         <router-link v-if="auth.isLogged" @click="auth.logout()" to="/login">Logout</router-link>
       </div>
       <div class="col">
-        <router-link v-if="'Administrator'===auth.role" to="/admin">Admin dashboard </router-link>
+        <router-link v-if="auth.isLogged" to="/admin">Admin dashboard </router-link>
       </div>
     </div>
   </nav>
