@@ -32,7 +32,7 @@
             </div>
 
             <!-- Submit Button -->
-            <button class="btn btn-primary w-100" @click="loginUser">Login</button>
+            <button class="btn btn-primary w-100" @click="login()">Login</button>
 
             <!-- Optional Message -->
             <div v-if="message" class="alert alert-danger mt-3" role="alert">
@@ -48,6 +48,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "LoginView",
   data() {
@@ -58,13 +60,26 @@ export default {
     }
   },
   methods: {
-    loginUser() {
+    async login() {
       if (!this.email.trim() || !this.password.trim()) {
         alert("Please enter both email and password!");
         return;
       }
-
-      console.log("Login attempt:", { email: this.email, password: this.password });
+      try {
+        const response = await axios.post('http://localhost:8000/login', {
+          email: this.email,
+          password: this.password
+        });
+        if (response.data.token) {
+          localStorage.setItem("token", response.data.token);
+        }
+        alert('Login successfull!');
+      } catch (error) {
+        console.log('Login failed', error);
+        if (error.response) {
+          alert("Invalid credentials!");
+        }
+      }
 
       this.message = "";
     }

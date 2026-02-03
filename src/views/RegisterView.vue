@@ -56,7 +56,7 @@
             </div>
 
             <!-- Submit Button -->
-            <button class="btn btn-primary w-100" @click="registerUser">Register</button>
+            <button class="btn btn-primary w-100" @click="register()">Register</button>
 
             <!-- Optional Message -->
             <div v-if="message" class="alert alert-success mt-3" role="alert">
@@ -72,6 +72,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "RegisterView",
   data() {
@@ -84,26 +86,29 @@ export default {
     }
   },
   methods: {
-    registerUser() {
+    async register() {
       if (!this.firstName.trim() || !this.lastName.trim() || !this.email.trim() || !this.password.trim()) {
         this.message = "Please fill in all fields!";
         return;
       }
 
+      try {
+        const response = await axios.post('http://localhost:8000/users', {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          password: this.password
+        });
+        console.log(response);
+        alert('Registration successful!');
 
-      //something like this will be a registration form sent to backend
-      console.log("Register attempt:", {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email,
-        password: this.password
-      });
-
-      this.firstName = "";
-      this.lastName = "";
-      this.email = "";
-      this.password = "";
-      this.message = "Registration successful!";
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.password = "";
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 }
