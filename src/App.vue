@@ -1,7 +1,17 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <nav class="container">
+    <div class="row">
+      <div class="col">
+        <router-link to="/">Home</router-link>
+      </div>|
+      <div class="col">
+        <router-link to="/about">About</router-link>
+      </div>|
+      <div class="col">
+        <router-link to="/login">Login </router-link>|
+        <router-link to="/register"> Register</router-link>
+      </div>
+    </div>
   </nav>
   <router-view/>
 </template>
