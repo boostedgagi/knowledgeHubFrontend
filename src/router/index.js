@@ -17,6 +17,11 @@ const routes = [
     name:'register',
     component: () => import('../views/RegisterView.vue')
   },
+  {
+    path:'/post',
+    name:'post',
+    component: () => import('../views/PostView.vue')
+  },
 ]
 
 const router = createRouter({

@@ -8,6 +8,9 @@
         <router-link to="/about">About</router-link>
       </div>|
       <div class="col">
+        <router-link to="/post">Post</router-link>
+      </div>|
+      <div class="col">
         <router-link to="/login">Login </router-link>|
         <router-link to="/register"> Register</router-link>
       </div>

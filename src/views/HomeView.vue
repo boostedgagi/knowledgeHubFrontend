@@ -69,8 +69,6 @@ export default {
   },
   methods: {
     search() {
-      // ovde možeš dodati logiku za pretragu, trenutno radi reactive filtering
-      console.log("Pretražujem: ", this.searchQuery);
     }
   }
 
