@@ -11,6 +11,9 @@
         <router-link to="/post">Post</router-link>
       </div>|
       <div class="col">
+        <router-link to="/ask">Ask</router-link>
+      </div>|
+      <div class="col">
         <router-link to="/login">Login </router-link>|
         <router-link to="/register"> Register</router-link>
       </div>
