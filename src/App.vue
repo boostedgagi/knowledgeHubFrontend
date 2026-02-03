@@ -17,8 +17,12 @@
         <router-link to="/profile">Profile</router-link>
       </div>|
       <div class="col">
-        <router-link v-if="!auth.isLogged" to="/login">Login |</router-link>
-        <router-link v-if="!auth.isLogged" to="/register"> Register |</router-link>
+        <router-link v-if="!auth.isLogged" to="/login">Login</router-link>
+      </div>|
+      <div class="col">
+        <router-link v-if="!auth.isLogged" to="/register">Register</router-link>
+      </div>|
+      <div class="col">
         <router-link v-if="auth.isLogged" @click="auth.logout()" to="/login">Logout</router-link>
       </div>
       <div class="col">

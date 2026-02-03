@@ -46,8 +46,6 @@
   </div>
 </template>
 <script>
-// @ is an alias to /src
-//tu ide logika za ako nije logovan i slicno
 
 export default {
   name: 'HomeView',
@@ -55,7 +53,7 @@ export default {
     return {
       searchQuery: "",
       cards: [
-        { id: 1, title: "Kartica 1", description: "Opis kartice 1" },
+        {}
       ]
     }
   },
