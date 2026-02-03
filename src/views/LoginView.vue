@@ -66,14 +66,17 @@ export default {
         return;
       }
       try {
-        const response = await axios.post(this.api+"/login", {
+        const response = await axios.post(this.api + "/login", {
           email: this.email,
           password: this.password
         });
         if (response.data.token) {
           localStorage.setItem("token", response.data.token);
         }
-        alert('Login successfull!');
+        // alert('Login successfull!');
+        if (window.confirm("Login successful! Go to home?")) {
+          this.$router.push("/");
+        }
       } catch (error) {
         console.log('Login failed', error);
         if (error.response) {

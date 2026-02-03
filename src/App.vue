@@ -17,16 +17,22 @@
         <router-link to="/profile">Profile</router-link>
       </div>|
       <div class="col">
-        <router-link to="/login">Login </router-link>|
-        <router-link to="/register"> Register</router-link>
+        <router-link v-if="!auth.isLogged" to="/login">Login |</router-link>
+        <router-link v-if="!auth.isLogged" to="/register"> Register |</router-link>
+        <router-link v-if="auth.isLogged" @click="auth.logout()" to="/login">Logout</router-link>
       </div>
       <div class="col">
-        <router-link to="/admin">Admin dashboard </router-link>
+        <router-link v-if="'Administrator'===auth.role" to="/admin">Admin dashboard </router-link>
       </div>
     </div>
   </nav>
   <router-view/>
 </template>
+
+<script setup>
+import { useAuthStore } from "@/stores/auth";
+const auth = useAuthStore();
+</script>
 
 <style>
 #app {
