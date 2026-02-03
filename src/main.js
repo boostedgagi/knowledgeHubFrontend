@@ -2,9 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
-// createApp(App).use(router).mount('#app')
-const app = createApp(App);
+const app = createApp(App).use(router);
 
-app.config.globalProperties.api = 'http://localhost:8000/'
+app.config.globalProperties.api = 'http://localhost:8000'
 
 app.mount('#app');
