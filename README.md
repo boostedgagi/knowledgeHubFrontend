@@ -6,7 +6,10 @@
 git clone git@github.com:boostedgagi/knowledgeHubFrontend.git
 ```
 
+
+```
 cd knowledgeHubFrontend
+```
 
 ## Project setup
 ```
