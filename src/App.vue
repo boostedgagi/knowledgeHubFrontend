@@ -5,9 +5,6 @@
         <router-link to="/">Home</router-link>
       </div>
       <div class="col">
-        <router-link to="/about">About</router-link>
-      </div>
-      <div class="col">
         <router-link to="/post">Post</router-link>
       </div>
       <div class="col">

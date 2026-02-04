@@ -1,5 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from "@/views/HomeView";
+import LoginView from "@/views/LoginView";
+import RegisterView from "@/views/RegisterView";
+import PostView from "@/views/PostView";
+import newPostView from "@/views/NewPostView";
+import ProfileView from "@/views/ProfileView";
+import AdminView from "@/views/AdminView";
 
 const routes = [
   {
@@ -10,35 +16,35 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('../views/LoginView.vue')
+    component: LoginView
   },
   {
     path:'/register',
     name:'register',
-    component: () => import('../views/RegisterView.vue')
+    component: () => RegisterView
   },
   {
-    path:'/post',
+    path:'/post/:id',
     name:'post',
-    component: () => import('../views/PostView.vue')
+    component: () => PostView
   },
   {
     path:'/ask',
     name:'ask',
     meta: { requiresAuth: true },
-    component: () => import('../views/NewPostView.vue')
+    component: () => newPostView
   },
   {
     path:'/profile',
     name:'profile',
     meta: { requiresAuth: true },
-    component: () => import('../views/ProfileView.vue')
+    component: () => ProfileView
   },
   {
     path:'/admin',
     name:'admin',
     meta: { requiresAuth: true },
-    component: () => import('../views/AdminView')
+    component: () => AdminView
   },
 ]
 

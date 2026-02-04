@@ -24,21 +24,22 @@
           v-for="post in posts"
           :key="post.id"
       >
-        <div class="card h-100 mb-4">
+        <div class="card h-auto mb-4">
           <div class="card-body">
-            <h5 class="card-title">{{post.title}}</h5>
-            <p class="card-text">{{ post.postContent }}</p>
-            <p class="card-text">{{ post.category.title }}</p>
-            <p class="card-text">User id</p>
-            <a href="#" class="btn btn-outline-primary">Show</a>
+            <h5 class="card-title">#{{post.id}} {{ post.title }}</h5>
+            <p class="card-text">{{post.postContent}}</p>
+            <p class="card-text">{{ post.category.title }} | {{getCommentsCount(post)}} comments</p>
+            <p class="card-text">{{ post.userId }}</p>
+            <a @click="redirectToPostPage(post)" class="btn btn-outline-primary">Show more</a>
           </div>
         </div>
 
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">{{ card.title }}</h5>
-            <p class="card-text">{{ card.description }}</p>
-            <a href="#" class="btn btn-outline-primary">Detaljnije</a>
+        <div v-for="comment in comments" :key="comment.id">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">{{ comment.title }}</h5>
+              <a href="#" class="btn btn-outline-primary">More...</a>
+            </div>
           </div>
         </div>
       </div>
@@ -47,8 +48,8 @@
   </div>
 </template>
 <script>
-
 import axios from "axios";
+import router from "@/router";
 
 export default {
   name: 'HomeView',
@@ -67,10 +68,20 @@ export default {
     async getPosts() {
       try {
         const response = await axios.get(this.api + '/posts');
-        this.posts = response.data.data||[];
+        this.posts = response.data.data || [];
+        this.comments = this.posts.comments;
       } catch (error) {
         this.error = "Could not load posts.";
       }
+    },
+    getCommentsCount(post){
+      if(post.comments.count>0){
+        return post.comments.count;
+      }
+      return 0;
+    },
+    redirectToPostPage(post){
+      router.push(`/post/${post.id}`)
     }
   }
 }

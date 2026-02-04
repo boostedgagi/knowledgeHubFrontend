@@ -31,7 +31,7 @@
               </ul>
             </div>
 
-            <!-- Answers -->
+            <!-- Comments -->
             <!--
             <div class="mb-3">
               <h6>Comments</h6>
